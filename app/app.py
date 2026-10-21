@@ -1,1 +1,0 @@
-'print ("GHA Trigger Demo")' 
