@@ -1,4 +1,4 @@
-name: 01 - CWVJ Flask Build Test Publish Pipeline
+name: 01 - Rk Flask Build Test Publish Pipeline
 
 on:
   push:
@@ -18,7 +18,7 @@ on:
       - ready_for_review
 
 env:
-  APPLICATION_NAME: cwvj-flask-app
+  APPLICATION_NAME: Rk-flask-app
   DOCKER_USERNAME: rkdockerhub18
 
 jobs:
