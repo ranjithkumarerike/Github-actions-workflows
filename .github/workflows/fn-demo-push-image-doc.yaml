@@ -18,7 +18,7 @@ on:
       - ready_for_review
 
 env:
-  APPLICATION_NAME: Rk-flask-app
+  APPLICATION_NAME: rk-flask-app
   DOCKER_USERNAME: rkdockerhub18
 
 jobs:
