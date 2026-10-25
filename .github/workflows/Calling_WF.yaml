@@ -30,7 +30,7 @@ jobs:
     needs:
       - build-payment-artifacts-job
 
-    uses: ./.github/workflows/deploy.yaml
+    uses: ./.github/workflows/Deploy_reusuable.yaml
 
     with:
       application_name: payment-service
