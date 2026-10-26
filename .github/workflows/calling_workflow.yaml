@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy-job:
-    uses: ./.github/workflows/deploy-application.yaml
+    uses: ./.github/workflows/reusable_deploy_Outputs.yaml
 
   notification-job:
     runs-on: ubuntu-latest
