@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 print("Cloud With VarJosh Flask Application Started")
 
+
 @app.get("/")
 def home():
     print("Home endpoint invoked")
@@ -15,10 +16,13 @@ def home():
         runtime="Docker + Flask"
     )
 
+
 @app.get("/health")
 def health():
     print("Health endpoint invoked")
+
     return jsonify(status="healthy"), 200
+
 
 if __name__ == "__main__":
     app.run(
