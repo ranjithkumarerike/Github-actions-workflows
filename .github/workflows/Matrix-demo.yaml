@@ -2,6 +2,16 @@ name: 01 - Matrix Strategy Demo
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: Deployment Environment
+        required: true
+        type: choice
+        default: dev
+        options:
+        - dev
+        - qa
+        - prod
 
 jobs:
   test-job:
