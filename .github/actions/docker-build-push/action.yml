@@ -37,4 +37,4 @@ runs:
       with:
         context: .
         push: true
-        tags: ${{ inputs.dockerhub-username }}:${{ inputs.image-tag }}
+        tags: ${{ inputs.image-name }}:${{ inputs.image-tag }}

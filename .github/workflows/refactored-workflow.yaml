@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      IMAGE_NAME: ${{ vars.DOCKER_IMAGE_NAME }}
+      IMAGE_NAME: ${{ vars.dockerhub-username }}
       IMAGE_TAG: ${{ github.run_number }}
 
     steps:
