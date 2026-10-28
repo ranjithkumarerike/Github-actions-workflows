@@ -11,7 +11,7 @@ def home():
     print("Home endpoint invoked")
 
     return jsonify(
-        message="Welcome to Cloud With VarJosh",
+        message="Welcome to Cloud With Ranjith Flask Application",
         platform="GitHub Actions",
         runtime="Docker + Flask"
     )
