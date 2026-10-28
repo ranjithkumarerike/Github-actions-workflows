@@ -44,4 +44,3 @@ runs:
         echo "Build Information"
         echo "======================================"
         cat output/build-info.txt
-    -

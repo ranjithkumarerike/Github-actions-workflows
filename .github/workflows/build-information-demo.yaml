@@ -18,7 +18,7 @@ jobs:
         uses: ./.github/actions/generate-build-info
 
         with:
-          application-name: Cloud With rk
+          application-name: Cloud With VarJosh
           environment: Development
 
       - name: Upload Build Information
