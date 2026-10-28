@@ -17,6 +17,6 @@ jobs:
         run: npm install
 
       - name: Execute JavaScript Action
-        uses: .github/actions/workflow-summary
+        uses: ./.github/actions/workflow-summary
         with:
           name: Cloud With Rk
