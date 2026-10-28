@@ -3,7 +3,7 @@ description: Display information about the current GitHub Actions workflow.
 
 inputs:
   name:
-    description: Name of the user
+    description: Name of the user.
     required: true
 
 runs:
