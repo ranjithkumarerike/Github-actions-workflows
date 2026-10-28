@@ -44,11 +44,4 @@ runs:
         echo "Build Information"
         echo "======================================"
         cat output/build-info.txt
-    - name: Set Output
-      shell: bash
-      run: |
-        echo "build-info-path=output/build-info.txt" >> $GITHUB_OUTPUT
-    - name: Upload Build Information
-      uses: actions/upload-artifact@v7
-      with:
-        name: build-information
+    -
