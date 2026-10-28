@@ -1,40 +1,54 @@
-name: Docker Build & Push
-
-description: Reusable Composite Action for building and pushing Docker images to Docker Hub.
+name: Generate Build Information
+description: Generates build metadata using GitHub Context.
 
 inputs:
-
-  dockerhub-username:
-    description: Docker Hub Username
+  application-name:
+    description: Name of the application.
     required: true
 
-  dockerhub-token:
-    description: Docker Hub Personal Access Token
+  environment:
+    description: Deployment environment.
     required: true
 
-  image-name:
-    description: Docker Image Name
-    required: true
-
-  image-tag:
-    description: Docker Image Tag
-    required: false
-    default: latest
+outputs:
+  build-info-path:
+    description: Path to the generated build information file.
+    value: output/build-info.txt
 
 runs:
   using: composite
 
   steps:
+    - name: Generate Build Information
+      shell: bash
+      run: |
+        set -e
 
-    - name: Login to Docker Hub
-      uses: docker/login-action@v4
-      with:
-        username: ${{ inputs.dockerhub-username }}
-        password: ${{ inputs.dockerhub-token }}
+        mkdir -p output
 
-    - name: Build & Push Docker Image
-      uses: docker/build-push-action@v7
+        BUILD_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+        cat <<EOF > output/build-info.txt
+        Application : ${{ inputs.application-name }}
+        Environment : ${{ inputs.environment }}
+        Repository  : ${{ github.repository }}
+        Branch      : ${{ github.ref_name }}
+        Commit SHA  : ${{ github.sha }}
+        Run Number  : ${{ github.run_number }}
+        Workflow    : ${{ github.workflow }}
+        Triggered By: ${{ github.actor }}
+        Build Time  : ${BUILD_TIME}
+        EOF
+
+        echo "======================================"
+        echo "Build Information"
+        echo "======================================"
+        cat output/build-info.txt
+    - name: Set Output
+      shell: bash
+      run: |
+        echo "build-info-path=output/build-info.txt" >> $GITHUB_OUTPUT
+    - name: Upload Build Information
+      uses: actions/upload-artifact@v7
       with:
-        context: .
-        push: true
-        tags: ${{ inputs.image-name }}:${{ inputs.image-tag }}
+        name: build-information
