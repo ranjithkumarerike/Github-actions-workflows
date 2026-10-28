@@ -1,29 +1,22 @@
-name: Build Information Demo
+name: JavaScript Action Demo
 
 on:
   workflow_dispatch:
 
 jobs:
-  build-information:
-
+  demo:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout Repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v5
 
-      - name: Generate Build Information
-        id: build-info
+      - name: Install Action Dependencies
+        working-directory: ./.github/actions/workflow-summary
+        run: npm install
 
-        uses: ./.github/actions/generate-build-info
-
+      - name: Execute JavaScript Action
+        uses: ./.github/actions/workflow-summary
         with:
-          application-name: Cloud With VarJosh
-          environment: Development
-
-      - name: Upload Build Information
-        uses: actions/upload-artifact@v7
-
-        with:
-          name: build-information
-          path: ${{ steps.build-info.outputs.build-info-path }}
+          name: Cloud With VarJosh
