@@ -19,4 +19,4 @@ jobs:
       - name: Execute JavaScript Action
         uses: ./.github/actions/workflow-summary
         with:
-          name: "GitHub Actions User"
+          name: "rk"
